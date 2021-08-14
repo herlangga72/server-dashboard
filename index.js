@@ -44,7 +44,8 @@ app.post('/getdata/', function(request, respon){
     respon.header('Content-Type', 'application/json');
     var test=[]
     pool.query("SELECT Id,uname,AccessLevel FROM login", function(err, rows, fields) {
-        rows.forEach(element => {
+        //this used for make data separeate with unique id. this handle error on ibm component table
+        rows.forEach(element => { 
             test.push({id:element.Id,uname:element.uname,accessLevel:element.AccessLevel})
         });
         console.log(test)
